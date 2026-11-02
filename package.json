@@ -6,15 +6,16 @@
   "license": "MIT",
   "packageManager": "bun@1.4.2",
   "scripts": {
-    "dev": "bun --bun vite --host 127.0.0.1",
+    "dev": "node scripts/restore-model.mjs && bun --bun vite --host 127.0.0.1",
     "typecheck": "bun --bun tsc --noEmit",
-    "build": "bun run typecheck && bun --bun vite build",
+    "build": "bun run typecheck && node scripts/restore-model.mjs && bun --bun vite build",
     "test": "bun test",
     "preview": "bun --bun vite preview --host 127.0.0.1",
     "prepare:model": "bun scripts/prepare-model.ts",
     "verify:model": "bun scripts/verify-model.ts",
     "format": "bun --bun prettier --write src scripts tests vite.config.ts tsconfig.json package.json",
-    "format:check": "bun --bun prettier --check src scripts tests vite.config.ts tsconfig.json package.json"
+    "format:check": "bun --bun prettier --check src scripts tests vite.config.ts tsconfig.json package.json",
+    "restore:model": "node scripts/restore-model.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.8.0",
